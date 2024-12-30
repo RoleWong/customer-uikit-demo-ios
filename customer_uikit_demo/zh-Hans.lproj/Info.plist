@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Customer UIKit Demo 需要访问您的麦克风以录制音频。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Customer UIKit Demo 需要访问您的摄像头以拍摄照片和视频。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Customer UIKit Demo 需要访问您的相册以保存照片和视频。</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Customer UIKit Demo 需要添加照片到您的相册。</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Customer UIKit Demo 需要访问您的位置以提供精准的客户服务。</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Customer UIKit Demo 需要追踪您的行为以提升客户服务体验。</string>
+</dict>
+</plist>
