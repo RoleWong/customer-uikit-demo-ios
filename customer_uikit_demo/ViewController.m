@@ -6,19 +6,19 @@
 //
 
 #import "ViewController.h"
-#import <TencentCloudCustomer/TencentCloudCustomerManager.h>
+#import "TUIC2CChatViewController.h"
+#import <TencentCloudAIDeskCustomer/TencentCloudCustomerManager.h>
 
 @interface ViewController ()
 
 @end
-
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Set up background gradient to match chat page style
+    // 背景渐变
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = self.view.bounds;
     gradientLayer.colors = @[(__bridge id)[UIColor colorWithRed:0.94 green:0.97 blue:1.0 alpha:1.0].CGColor,
@@ -27,9 +27,9 @@
     gradientLayer.endPoint = CGPointMake(1, 1);
     [self.view.layer insertSublayer:gradientLayer atIndex:0];
 
-    // Set up introduction text with icon
+    // 介绍文本
     UILabel *introLabel = [[UILabel alloc] init];
-    introLabel.text = @"腾讯云即时通信 IM 智能客服，凭借腾讯多年在即时通信领域和人工智能领域的深厚积累，为企业提供了一站式的客户服务解决方案。您可以简单的将智能客服集成到企业网站、移动应用和小程序等平台中，为您的用户提供高效的客户服务。";
+    introLabel.text = @"AI-driven customer service UIKit for Tencent Cloud Desk (customer-side), providing efficient and seamless communication with both AI and human agents.";
     introLabel.textColor = [UIColor darkGrayColor];
     introLabel.font = [UIFont systemFontOfSize:14];
     introLabel.numberOfLines = 0;
@@ -37,33 +37,73 @@
     introLabel.frame = CGRectMake(30, 200, self.view.bounds.size.width - 60, 100);
     [self.view addSubview:introLabel];
     
-    // Add icon to the left of the intro text
+    // 图标
     UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon"]];
     iconView.frame = CGRectMake(30, 200, 50, 40);
     iconView.center = CGPointMake(self.view.center.x, 120);
     [self.view addSubview:iconView];
 
-    // Create the button for "立即体验" (Experience Now)
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button setTitle:@"立即体验" forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0];
-    button.layer.cornerRadius = 10;
-    button.layer.shadowColor = [UIColor blackColor].CGColor;
-    button.layer.shadowOffset = CGSizeMake(0, 2);
-    button.layer.shadowOpacity = 0.3;
-    button.layer.shadowRadius = 5;
+    // "Customer Service Chat" 按钮
+    UIButton *customerServiceButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [customerServiceButton setTitle:@"Customer Service Chat" forState:UIControlStateNormal];
+    customerServiceButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [customerServiceButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    customerServiceButton.backgroundColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0];
+    customerServiceButton.layer.cornerRadius = 10;
+    customerServiceButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    customerServiceButton.layer.shadowOffset = CGSizeMake(0, 2);
+    customerServiceButton.layer.shadowOpacity = 0.3;
+    customerServiceButton.layer.shadowRadius = 5;
+    customerServiceButton.frame = CGRectMake(0, 0, 250, 50);
+    customerServiceButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 280);
+    [customerServiceButton addTarget:self action:@selector(chatButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:customerServiceButton];
+    
 
-    // Set button size and position
-    button.frame = CGRectMake(0, 0, 200, 50);
-    button.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 150); // Slightly below center
-    [button addTarget:self action:@selector(chatButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    // "Normal Chat" 按钮
+    UIButton *normalChatButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [normalChatButton setTitle:@"Normal Chat" forState:UIControlStateNormal];
+    normalChatButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [normalChatButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal]; // 深灰色文字
+    normalChatButton.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0]; // 浅灰色背景
+    normalChatButton.layer.cornerRadius = 10;
+    normalChatButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    normalChatButton.layer.shadowOffset = CGSizeMake(0, 2);
+    normalChatButton.layer.shadowOpacity = 0.1; // 轻微阴影，符合二级按钮风格
+    normalChatButton.layer.shadowRadius = 3;
+    normalChatButton.frame = CGRectMake(0, 0, 250, 50);
+    normalChatButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 120);
+    [normalChatButton addTarget:self action:@selector(normalChatButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:normalChatButton];
+    
+    // 说明 Label
+    UILabel *normalChatDescriptionLabel = [[UILabel alloc] init];
+    normalChatDescriptionLabel.text = @"Normal Chat is a pure Tencent Cloud Chat component.";
+    normalChatDescriptionLabel.textColor = [UIColor darkGrayColor];
+    normalChatDescriptionLabel.font = [UIFont systemFontOfSize:14];
+    normalChatDescriptionLabel.numberOfLines = 0;
+    normalChatDescriptionLabel.textAlignment = NSTextAlignmentCenter;
+    normalChatDescriptionLabel.frame = CGRectMake(30, normalChatButton.frame.origin.y - 40, self.view.bounds.size.width - 60, 50);
+    [self.view addSubview:normalChatDescriptionLabel];
+
 }
 
+// 客服聊天按钮点击事件
 - (void)chatButtonTapped {
     [[TencentCloudCustomerManager sharedManager] pushToCustomerServiceViewControllerFromController:self];
 }
 
+// 普通聊天按钮点击事件
+- (void)normalChatButtonTapped {
+    TUIChatConversationModel *conversationData = [[TUIChatConversationModel alloc] init];
+    conversationData.userID = @"admin";
+    
+    TUIBaseChatViewController *chatVC = nil;
+    chatVC = [[TUIC2CChatViewController alloc] init];
+    chatVC.conversationData = conversationData;
+    
+    [self.navigationController pushViewController:chatVC animated:YES];
+}
+
 @end
+

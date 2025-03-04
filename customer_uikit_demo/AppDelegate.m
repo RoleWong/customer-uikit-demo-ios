@@ -8,7 +8,8 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "Private/GenerateTestUserSig.h"
-#import "TencentCloudCustomer/TencentCloudCustomerManager.h"
+#import "TencentCloudAIDeskCustomer/TencentCloudCustomerManager.h"
+#import "TUILogin.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +30,26 @@
 }
 
 - (void)login:(NSString *)userID userSig:(NSString *)sig {
+//    [[V2TIMManager sharedInstance] callExperimentalAPI:@"setTestEnvironment" param:@(true) succ:^(NSObject *result) {
+//        [TUILogin login:public_SDKAPPID userID:userID userSig:sig succ:^{
+//                NSLog(@"登录成功");
+//            } fail:^(int code, NSString *msg) {
+//                NSLog(@"登录失败");
+//            }];
+//        
+//        [[TencentCloudCustomerManager sharedManager] loginWithSdkAppID:public_SDKAPPID userID:userID userSig:sig completion:^(NSError *error) {
+//            [[TencentCloudCustomerManager sharedManager] setCustomerServiceUserID: customer_service_id];
+//        }];
+//    } fail:^(int code, NSString *desc) {
+//
+//    }];
+    
+    [TUILogin login:public_SDKAPPID userID:userID userSig:sig succ:^{
+            NSLog(@"登录成功");
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"登录失败");
+        }];
+    
     [[TencentCloudCustomerManager sharedManager] loginWithSdkAppID:public_SDKAPPID userID:userID userSig:sig completion:^(NSError *error) {
         [[TencentCloudCustomerManager sharedManager] setCustomerServiceUserID: customer_service_id];
     }];

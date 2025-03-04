@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
  * SDKAppID uniquely identifies a Tencent Cloud account.
  */
 
-static const int public_SDKAPPID = 0; 
+static const int public_SDKAPPID = 0;
 /**
  *  签名过期时间，建议不要设置的过短
  *

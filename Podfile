@@ -10,24 +10,18 @@ target 'customer_uikit_demo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   use_modular_headers!
-    pod 'TencentCloudCustomer', '2.4.0'
-#    pod 'TencentCloudCustomer', :path => '../TencentCloudCustomer'
-#    pod 'TDeskChat', :path => '../TUIKit/TDeskChat'
-#    pod 'TDeskCore', :path => '../TUIKit/TDeskCore'
-#    pod 'TDeskCommon', :path => '../TUIKit/TDeskCommon'
-#    pod 'TDeskCustomerServicePlugin', :path => '../TUIKit/TDeskCustomerServicePlugin'
-#    pod 'ReactiveObjCForTDesk', :path => '/Users/rolewong/Documents/GitHub/ReactiveObjC_2023'
-#    pod 'TUIChat', '8.2.6325'
-#    pod 'TIMCommon', '8.2.6325'
-#    pod 'TUIConversation', '8.2.6325'
-#    pod 'TUIContact', '8.2.6325'
-#    pod 'TUIGroup', '8.2.6325'
-#    pod 'TUISearch', '8.2.6325'
-#    pod 'TUITranslationPlugin', '8.2.6325'
-#    pod 'TUIConversationGroupPlugin', '8.2.6325'
-#    pod 'TUIConversationMarkPlugin', '8.2.6325'
-#    pod 'TUIVoiceToTextPlugin', '8.2.6325'
-#    pod 'TIMPush', '8.2.6325'
+    pod 'TencentCloudAIDeskCustomer', '1.0.1'
+    pod 'TUIChat', '8.2.6325'
+    pod 'TIMCommon', '8.2.6325'
+    pod 'TUIConversation', '8.2.6325'
+    pod 'TUIContact', '8.2.6325'
+    pod 'TUIGroup', '8.2.6325'
+    pod 'TUISearch', '8.2.6325'
+    pod 'TUITranslationPlugin', '8.2.6325'
+    pod 'TUIConversationGroupPlugin', '8.2.6325'
+    pod 'TUIConversationMarkPlugin', '8.2.6325'
+    pod 'TUIVoiceToTextPlugin', '8.2.6325'
+    pod 'TIMPush', '8.2.6325'
 end
 
 post_install do |installer|
