@@ -10,7 +10,7 @@ target 'customer_uikit_demo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   use_modular_headers!
-    pod 'TencentCloudAIDeskCustomer', '1.0.1'
+    pod 'TencentCloudAIDeskCustomer', '1.0.11'
     pod 'TUIChat', '8.2.6325'
     pod 'TIMCommon', '8.2.6325'
     pod 'TUIConversation', '8.2.6325'
