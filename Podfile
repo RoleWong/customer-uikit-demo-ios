@@ -16,6 +16,7 @@ target 'customer_uikit_demo' do
     pod 'TUIConversation', '8.2.6325'
     pod 'TUIContact', '8.2.6325'
     pod 'TUIGroup', '8.2.6325'
+    pod 'TUICore', '8.2.6325'
     pod 'TUISearch', '8.2.6325'
     pod 'TUITranslationPlugin', '8.2.6325'
     pod 'TUIConversationGroupPlugin', '8.2.6325'
